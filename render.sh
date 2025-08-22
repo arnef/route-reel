@@ -7,7 +7,6 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     --week) WEEK=1; shift 1;;
     --landscape) WIDTH=1280; HEIGHT=720; shift 1;;
-    --hd) HD=1; shift 1;;
     -*) echo "unknown option: $1" >&2; exit 1;;
     *) DIR="${1%/}"; shift 1;;
   esac
@@ -16,15 +15,9 @@ done
 if [[ $WEEK == 1 ]]; then
 	args=(--speedup 12000)
 else 
-	args=(--speedup 4000 --track-icon-file ./bus.png --zoom 9)
+	args=(--speedup 4000 --track-icon-file ./bus.png)
 fi
 
-if [[ $HD == 1 ]]; then 
-	WIDTH=$WIDTH * 2
-	HEIGHT=$HEIGHT * 2
-fi
-
-echo "$WIDTH x $HEIGHT"
 
 for file in ${DIR}/*.gpx; do
 	args+=(--input $file)
