@@ -15,7 +15,7 @@ done
 if [[ $WEEK == 1 ]]; then
 	args=(--speedup 12000)
 else 
-	args=(--speedup 4000 --track-icon-file ./bus.png)
+	args=(--speedup 4000 --track-icon-file /usr/local/lib/bus.png)
 fi
 
 
