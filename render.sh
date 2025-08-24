@@ -30,7 +30,7 @@ done
 /usr/bin/java -jar /usr/local/lib/gpx-animator.jar \
 	${args[@]} \
 	--output ${DIR}.mp4 \
-	--tms-url-template https://tile.openstreetmap.org/{zoom}/{x}/{y}.png \
+	--tms-url-template https://tile.openstreetmap.de/{zoom}/{x}/{y}.png \
 	--width $WIDTH \
 	--height $HEIGHT \
 	--track-icon-mirror \
