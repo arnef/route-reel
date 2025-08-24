@@ -5,7 +5,7 @@ HEIGHT=1600
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
-    --week) WEEK=1; shift 1;;
+    --week) WEEK=$2; shift 2;;
     --landscape) WIDTH=1280; HEIGHT=720; shift 1;;
     --zoom) ZOOM=$2; shift 2;;
     -*) echo "unknown option: $1" >&2; exit 1;;
@@ -13,8 +13,8 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
-if [[ $WEEK == 1 ]]; then
-	args=(--speedup 12000)
+if [[ -n "$WEEK" ]]; then
+	args=(--speedup $(( 16000 * $WEEK )))
 else 
 	args=(--speedup 4000 --track-icon-file /usr/local/lib/bus.png)
 fi
