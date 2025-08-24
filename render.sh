@@ -7,6 +7,7 @@ while [ "$#" -gt 0 ]; do
   case "$1" in
     --week) WEEK=1; shift 1;;
     --landscape) WIDTH=1280; HEIGHT=720; shift 1;;
+    --zoom) ZOOM=$2; shift 2;;
     -*) echo "unknown option: $1" >&2; exit 1;;
     *) DIR="${1%/}"; shift 1;;
   esac
@@ -18,6 +19,9 @@ else
 	args=(--speedup 4000 --track-icon-file /usr/local/lib/bus.png)
 fi
 
+if [[ -n "$ZOOM" ]]; then 
+	args+=(--zoom $ZOOM)
+fi
 
 for file in ${DIR}/*.gpx; do
 	args+=(--input $file)
