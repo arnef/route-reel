@@ -16,7 +16,7 @@ done
 if [[ -n "$WEEK" ]]; then
 	args=(--speedup $(( 16000 * $WEEK )))
 else 
-	args=(--speedup 4000 --track-icon-file /usr/local/lib/bus.png)
+	args=(--speedup 4000)
 fi
 
 if [[ -n "$ZOOM" ]]; then 
@@ -25,6 +25,12 @@ fi
 
 for file in ${DIR}/*.gpx; do
 	args+=(--input $file)
+	if [[ -z "$WEEK" ]]; then 
+		case $file in
+			*ferry.gpx) args+=(--track-icon-file /usr/local/lib/ferry.png);;
+			*) args+=(--track-icon-file /usr/local/lib/bus.png);;
+		esac
+	fi
 done
 
 /usr/bin/java -jar /usr/local/lib/gpx-animator.jar \
