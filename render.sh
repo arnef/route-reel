@@ -28,6 +28,7 @@ for file in ${DIR}/*.gpx; do
 	if [[ -z "$WEEK" ]]; then 
 		case $file in
 			*ferry.gpx) args+=(--track-icon-file /usr/local/lib/ferry.png);;
+			*cake.gpx) args+=(--track-icon-file /usr/local/lib/cake.png);;
 			*) args+=(--track-icon-file /usr/local/lib/bus.png);;
 		esac
 	fi
